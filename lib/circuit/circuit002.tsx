@@ -366,7 +366,7 @@ export const BgaBreakoutBoard = ({
       thickness="1.566mm"
       solderMaskColor="black"
       silkscreenColor="white"
-      routingDisabled={true}
+      routingDisabled={false}
     >
       <chip
         name="BGA"
