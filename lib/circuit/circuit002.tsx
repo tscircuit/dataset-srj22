@@ -212,15 +212,18 @@ const getDensestPointCluster = (points: Point[]): Point[] => {
 
 const getEdgePadPosition = (index: number) => {
   const boardEdge = 10.3
+  const cornerKeepout = 1.3
   const topCount = 18
   const rightCount = 18
   const bottomCount = 18
   const leftCount = 17
-  const spread = 18
+  const sideSpan = boardEdge * 2 - cornerKeepout * 2
+  const getSideOffset = (sideIndex: number, sideCount: number) =>
+    -boardEdge + cornerKeepout + (sideIndex * sideSpan) / (sideCount - 1)
 
   if (index < topCount) {
     return {
-      x: -spread / 2 + (index * spread) / (topCount - 1),
+      x: getSideOffset(index, topCount),
       y: boardEdge,
     }
   }
@@ -229,14 +232,14 @@ const getEdgePadPosition = (index: number) => {
     const sideIndex = index - topCount
     return {
       x: boardEdge,
-      y: boardEdge - (sideIndex * spread) / (rightCount - 1),
+      y: boardEdge - cornerKeepout - (sideIndex * sideSpan) / (rightCount - 1),
     }
   }
 
   if (index < topCount + rightCount + bottomCount) {
     const sideIndex = index - topCount - rightCount
     return {
-      x: boardEdge - (sideIndex * spread) / (bottomCount - 1),
+      x: boardEdge - cornerKeepout - (sideIndex * sideSpan) / (bottomCount - 1),
       y: -boardEdge,
     }
   }
@@ -244,7 +247,7 @@ const getEdgePadPosition = (index: number) => {
   const sideIndex = index - topCount - rightCount - bottomCount
   return {
     x: -boardEdge,
-    y: -boardEdge + (sideIndex * spread) / (leftCount - 1),
+    y: getSideOffset(sideIndex, leftCount),
   }
 }
 
