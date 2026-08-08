@@ -28,3 +28,5 @@ yarn-error.log*
 results/
 
 cosmos-export/
+.vercel
+.env*
