@@ -18,6 +18,9 @@
   ],
   "scripts": {
     "dev": "tsci dev",
+    "build:site": "cosmos-export",
+    "cosmos": "cosmos",
+    "generate:readme-image": "bun scripts/generate-readme-image.mjs",
     "snapshot": "tsci snapshot",
     "snapshot:update": "tsci snapshot --update",
     "start": "tsci dev",
@@ -60,7 +63,12 @@
     "@tscircuit/solver-utils": "^0.0.19",
     "@types/bun": "^1.3.14",
     "@types/react": "^19.2.17",
+    "react": "^19.2.4",
+    "react-cosmos": "^7.3.0",
+    "react-cosmos-plugin-vite": "^7.3.0",
+    "react-dom": "^19.2.4",
     "tscircuit": "^0.0.1832",
-    "tsup": "^8.5.1"
+    "tsup": "^8.5.1",
+    "vite": "^8.1.5"
   }
 }
